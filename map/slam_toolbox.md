@@ -150,7 +150,7 @@ ros2 run nav2_map_server map_saver_cli -f <保存先>/<地図名>
 `.pgm` は地図画像，`.yaml` は地図の解像度や原点などを記述した設定ファイルである．
 
 <!-- ここに保存された地図画像を入れる -->
-![作成した地図](../images/slam_toolbox/generated_map.png)
+![作成した地図](../images/slam_toolbox/tsudanuma_sakaitaisei_map.png)
 
 ---
 
