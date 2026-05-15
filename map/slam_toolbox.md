@@ -49,7 +49,7 @@ ros2 bag info <rosbag名>
 | `/odom` | オドメトリ情報 |
 
 <!-- ここに ros2 bag info のスクリーンショットを入れる -->
-![rosbagの確認](../images/slam_toolbox/rosbag_info.png)
+
 
 ---
 
