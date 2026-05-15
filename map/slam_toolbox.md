@@ -2,14 +2,14 @@
 
 ## 概要
 
-本ページでは，box3で取得したrosbagを用いて，slam_toolboxにより2D地図を作成する手順を示す．  
+本ページでは，実機で取得したrosbagを用いて，slam_toolboxにより2D地図を作成する手順を示す．  
 作成した地図は，Nav2で使用する地図ファイルとして保存する．
 
 ---
 
 ## 使用するもの
 
-- box3で取得したrosbag
+- 実機で取得したrosbag
 - slam_toolbox
 - nav2_map_server
 
@@ -85,7 +85,7 @@ slam_toolbox:
 | `resolution` | 作成する地図の解像度 |
 
 <!-- ここに slam_toolbox_params.yaml のスクリーンショットを入れる -->
-![slam_toolboxのパラメータ](../images/slam_toolbox/slam_toolbox_params.png)
+[slam_toolbox_params.yaml](./slam_toolbox_params.yaml)
 
 ---
 
@@ -161,7 +161,7 @@ ros2 run nav2_map_server map_saver_cli -f <保存先>/<地図名>
 - オフライン自己位置推定
 - costmap用地図の作成
 - waypoint配置
-- box3でのNav2走行
+- 実機でのNav2走行
 
 ---
 
