@@ -76,11 +76,7 @@ $ ros2 launch emcl2 emcl2.launch.py map:=/path/to/your/map.yaml use_sim_time:=tr
 $ ros2 launch emcl2 emcl2.launch.py map:=/home/rosuser/box3_ws/src/orne-box/orne_box_navigation_executor/config/maps/cit_3f_map.yaml use_sim_time:=true
 ```
 
-**注意**: `cit_3f_map.yaml` のパスは各自の環境に合わせて変更してください。
-- `cit_3f_map.yaml` と `cit_3f_map.pgm` はペアで必要です
 
-**地図ファイルの参照先** (orne-box):
-https://github.com/open-rdc/orne-box/tree/humble-devel/orne_box_navigation_executor/config/maps
 
 ### 4. rviz2 の起動
 
@@ -88,17 +84,7 @@ https://github.com/open-rdc/orne-box/tree/humble-devel/orne_box_navigation_execu
 $ rviz2
 ```
 
-#### 起動時の様子
 
-**ROS 2 Humble の場合**:
-- Map が表示されないことがありますが、一旦無視して進めてください（可視化できていないだけで、調整は可能です）
-- 参考動画: https://youtu.be/JVHlCpinnRE
-
-**ROS 1 Noetic の場合** (参考):
-- こちらでは Map が表示できます
-- 参考動画: https://youtu.be/frq4eJWPrHk
-
----
 
 ## 可視化（RViz2 での表示設定）
 
@@ -144,5 +130,5 @@ $ ros2 bag info rosbag2_2026_01_31-16_40_55
 ## 参考リンク
 
 - **emcl2_ros2 GitHub**: https://github.com/CIT-Autonomous-Robot-Lab/emcl2_ros2
-- **orne-box**: https://github.com/open-rdc/orne-box
+
 
