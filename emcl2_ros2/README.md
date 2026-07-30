@@ -4,12 +4,6 @@
 
 自己位置推定（Self-Localization）とは、ロボットが周辺環境における自分の現在位置を認識するプロセスです。LiDAR センサーからの距離データと事前に用意した地図を照合することにより、ロボットの位置を推定します。
 
----
-
-## 環境
-
-- **OS**：Ubuntu 22.04 LTS
-- **ROS 2**：Humble
 
 ---
 
@@ -54,9 +48,9 @@ source install/setup.bash
 
 - [emcl2.param.yaml](https://github.com/CIT-Autonomous-Robot-Lab/emcl2_ros2/blob/main/config/emcl2.param.yaml)
 
-### Box3（orne-box）の例
+### orne-boxの例
 
-Box3/orne-box の TF 構成に合わせて `footprint_frame_id` を変更する必要があります。
+ロボットの TF 構成に合わせて `footprint_frame_id` を変更する必要があります。
 
 **重要**: 起動前にパラメータファイル内の以下の部分を確認・修正してください。
 
@@ -98,19 +92,6 @@ $ ros2 launch emcl2 emcl2.launch.py map:=/home/rosuser/box3_ws/src/orne-box/orne
 ros2 bag info <your_rosbag>
 ```
 
-少なくとも、次の Topic が必要です。
-
-- `/odometry/filtered`
-- `/tf`
-- `/tf_static`
-- `/scan`
-
-![rosbagの中身の確認](images/rosbag_info.png)
-
-> [!NOTE]
->
-> rosbag のファイル名は、使用するものに変更してください。
-
 詳細な調整方法については、別ファイル（[emcl2_1.md](emcl2_1.md) と [emcl2_2.md](emcl2_2.md)）を参照してください。
 
 ---
@@ -126,13 +107,13 @@ map.yaml
 map.pgm
 ```
 
-Box3で使用している地図は、次のディレクトリにあります。
+orne-boxで使用している地図は、次のディレクトリにあります。
 
 ```text
 orne_box_navigation_executor/config/maps/
 ```
 
-- [Box3の地図ファイル](https://github.com/open-rdc/orne-box/tree/humble-devel/orne_box_navigation_executor/config/maps)
+- [orne-boxの地図ファイル](https://github.com/open-rdc/orne-box/tree/humble-devel/orne_box_navigation_executor/config/maps)
 
 ---
 
@@ -166,24 +147,11 @@ Fixed Frame を `map` に設定し、次の Topic を追加してください：
 
 ---
 
-## 7. 初期位置の設定
-
-RViz2 の `2D Pose Estimate` を使って初期位置を設定し、パーティクルの収束を確認してください。
-
----
-
-## 8. 正常に動作しているかの確認
+## 7. 正常に動作しているかの確認
 
 - 地図がRViz2に表示されている
 - LaserScanと地図が大きくずれていない
 - パーティクルがロボット周辺に収束している
-
----
-
-## 9. パラメータ調整へ進む
-
-- [オドメトリ誤差パラメータの調整](./emcl2_1.md)
-- [膨張リセットとその他のパラメータの調整](./emcl2_2.md)
 
 ---
 
@@ -199,4 +167,3 @@ RViz2 の `2D Pose Estimate` を使って初期位置を設定し、パーティ
 
 - [emcl2_ros2](https://github.com/CIT-Autonomous-Robot-Lab/emcl2_ros2)
 - [emcl2_ros2 のパラメータファイル](https://github.com/CIT-Autonomous-Robot-Lab/emcl2_ros2/blob/main/config/emcl2.param.yaml)
-- [orne-box の地図ファイル](https://github.com/open-rdc/orne-box/tree/humble-devel/orne_box_navigation_executor/config/maps)
