@@ -1,4 +1,4 @@
-# emcl2_ros2 (拡張モンテカルロ位置推定)
+# emcl2_ros2 
 
 ## 概要
 
@@ -6,22 +6,12 @@ emcl2_ros2 は、ROS 2 環境での自己位置推定を行うパッケージで
 
 ## 自己位置推定とは？
 
-自己位置推定（Self-Localization）とは、ロボットが周辺環境における自分の現在位置を認識するプロセスです。LiDAR センサーからの距離データ `/scan` と事前に用意した地図を照合することにより、ロボットの位置を推定します。
+自己位置推定（Self-Localization）とは、ロボットが周辺環境における自分の現在位置を認識するプロセスです。LiDAR センサーからの距離データと事前に用意した地図を照合することにより、ロボットの位置を推定します。
 
-## なぜ AMCL ではなく emcl2 を使うのか？
 
-- **AMCL（Adaptive Monte Carlo Localization）**: 古いアルゴリズムで計算量が多い
-- **emcl2（Expansion Monte Carlo Localization 2）**: より効率的で、ロボットの位置が大きく異なる場合でも迅速に復帰できる改善版アルゴリズム
-
-emcl2 は AMCL より高速で精度が高いため、実運用環境での使用が推奨されます。
 
 ---
 
-## セットアップ
-
-### 環境
-- **OS**: Ubuntu 22.04 LTS
-- **ROS 2**: Humble
 
 ### 必要なパッケージのインストール
 
@@ -50,7 +40,9 @@ $ sudo apt install ros-humble-nav2-map-server
 emcl2_ros2 のパラメータファイル：
 https://github.com/CIT-Autonomous-Robot-Lab/emcl2_ros2/blob/main/config/emcl2.param.yaml
 
-**重要**: 起動前にパラメータファイル内の以下の部分を修正してください：
+**重要**: 起動前にパラメータファイル内の以下の部分を修正してください。
+
+**注意**: 下の変更例は orne-box の一例です。`footprint_frame_id` は実際にお使いのロボットで使用している TF フレーム名に合わせて変更してください（orne-box では `base_link` を使います）。
 ```yaml
 # 変更前
 footprint_frame_id: "base_footprint"
@@ -62,7 +54,7 @@ footprint_frame_id: "base_link"
 ### 2. rosbag の再生（必要な Topic のみ）
 
 ```bash
-$ ros2 bag play rosbag2_2026_01_31-16_40_55 --clock --topics /odometry/filtered /tf /tf_static /scan
+$ ros2 bag play <your_rosbag> --clock --topics /odometry/filtered /tf /tf_static /scan
 ```
 
 ### 3. emcl2 の起動
@@ -113,7 +105,7 @@ emcl2 の精度や動作は、パラメータファイルで調整できます
 **パラメータファイル**:
 https://github.com/CIT-Autonomous-Robot-Lab/emcl2_ros2/blob/main/config/emcl2.param.yaml
 
-詳細な調整方法については、別ファイル（emcl2_params.md）を参照してください。
+詳細な調整方法については、別ファイル（[emcl2_1.md](emcl2_1.md) と [emcl2_2.md](emcl2_2.md)）を参照してください。
 
 ---
 
@@ -122,7 +114,7 @@ https://github.com/CIT-Autonomous-Robot-Lab/emcl2_ros2/blob/main/config/emcl2.pa
 ### rosbag の中身を確認したい場合
 
 ```bash
-$ ros2 bag info rosbag2_2026_01_31-16_40_55
+$ ros2 bag info <your_rosbag>
 ```
 
 ---
